@@ -14,14 +14,35 @@ body {
 }
 
 button {
-    width: 24%;
-    height: 100px;
+    width: 120px;
+    height: 110px;
     font-family: Antonio;
+    font-size: 38px;
+    border-radius: 25px;
+    border-width: 5px;
+    border-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+button.pressed {
+    transform: scale(0.8);
 }
 
 button img {
-    width: 100%;
+    width: 48px;
     height: auto;
+    margin-top: 5px;
+}
+
+button#equal {
+    background-color: #ff7700;
+}
+
+button#equal:hover {
+    background-color: #ff8866;
 }
 
 .main {
@@ -34,11 +55,11 @@ button img {
 }
 
 .display-upper {
-
+    height: 150px;
 }
 
 .display-lower {
-
+    height: 150px;
 }
 
 .buttons {
@@ -54,15 +75,16 @@ button img {
 
 .footer {
     width: 100%;
-    background-color: #4455ff;
+    height: 30px;
+    background-color: #ff7700;
     font-family: Antonio;
-    color: #ff7700;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .footer img {
-    width: 20px;
+    width: 18px;
     height: auto;
 }
