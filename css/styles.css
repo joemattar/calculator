@@ -1,0 +1,68 @@
+@font-face {
+    font-family: Antonio;
+    src: url(../fonts/Antonio.ttf);
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: black;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    width: 24%;
+    height: 100px;
+    font-family: Antonio;
+}
+
+button img {
+    width: 100%;
+    height: auto;
+}
+
+.main {
+    width: 100%;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+}
+
+.display-upper {
+
+}
+
+.display-lower {
+
+}
+
+.buttons {
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    width: 100%;
+    background-color: #4455ff;
+    font-family: Antonio;
+    color: #ff7700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer img {
+    width: 20px;
+    height: auto;
+}
