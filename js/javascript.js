@@ -33,7 +33,20 @@ function buttonEffect(button) {
     })
 }
 
-// Event listerner for all buttons upon click
+// Event listerner for all buttons on click
 for (let button of allButtons) {
-    button.addEventListener("click", buttonEffect.bind(null, button));
+    button.addEventListener("click", () => {
+        buttonEffect(button)
+        if (button.value) {
+            lowerDisplay.textContent = lowerDisplay.textContent.concat(button.value);
+        }
+    }
+    )    
 }
+
+// Event listener for AC button on click
+
+// Event listener for backspace button on click
+buttonBackspace.addEventListener("click", () => {
+    lowerDisplay.textContent = lowerDisplay.textContent.slice(0, lowerDisplay.textContent.length - 1)
+})

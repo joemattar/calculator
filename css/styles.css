@@ -61,6 +61,14 @@ button#equal:hover {
     background-color: #ff8866;
 }
 
+button.numbers {
+    background-color: #ffeecc;
+}
+
+button.numbers:hover {
+    background-color: #ffcc99;
+}
+
 .main {
 
 }
@@ -72,21 +80,33 @@ button#equal:hover {
 }
 
 .display-upper {
+    padding: 5px;
     height: 150px;
     background-color: #dd4444;
     border-style: solid;
     border-radius: 25px;
     border-width: 5px;
     border-color: black;
+    font-family: Antonio;
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .display-lower {
+    padding: 5px;
     height: 150px;
     background-color: #33cc99;
     border-style: solid;
     border-radius: 25px;
     border-width: 5px;
     border-color: black;
+    font-family: Antonio;
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .buttons {
