@@ -2,6 +2,7 @@ const upperDisplay = document.querySelector(".display-upper");
 const lowerDisplay = document.querySelector(".display-lower");
 const buttonAc = document.querySelector("#ac");
 const buttonBackspace = document.querySelector("#backspace");
+
 const buttonPercent = document.querySelector("#percent");
 const buttonDivision = document.querySelector("#division");
 const buttonSeven = document.querySelector("#seven");
@@ -24,11 +25,15 @@ const buttonEqual = document.querySelector("#equal");
 const allButtons = document.querySelectorAll("button");
 
 
+// Function to create transition effect when buttons are clicked
+function buttonEffect(button) {
+    button.classList.add("pressed");
+    button.addEventListener("transitionend", () => {
+    button.classList.remove("pressed");
+    })
+}
+
+// Event listerner for all buttons upon click
 for (let button of allButtons) {
-    button.addEventListener("click", () => {
-        button.classList.add("pressed");
-        button.addEventListener("transitionend", () => {
-            button.classList.remove("pressed");
-        })
-    });
+    button.addEventListener("click", buttonEffect.bind(null, button));
 }

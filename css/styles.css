@@ -37,6 +37,14 @@ button img {
     margin-top: 5px;
 }
 
+button.deletion {
+    background-color: #9944ff;
+}
+
+button.deletion:hover {
+    background-color: #cc88ff;
+}
+
 button.operation {
     background-color: #ffaa00;
 }
@@ -54,20 +62,31 @@ button#equal:hover {
 }
 
 .main {
-    width: 100%;
+
 }
 
 .display {
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
 }
 
 .display-upper {
     height: 150px;
+    background-color: #dd4444;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 5px;
+    border-color: black;
 }
 
 .display-lower {
     height: 150px;
+    background-color: #33cc99;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 5px;
+    border-color: black;
 }
 
 .buttons {
@@ -75,7 +94,6 @@ button#equal:hover {
 }
 
 .row {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
