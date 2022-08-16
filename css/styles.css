@@ -37,6 +37,14 @@ button img {
     margin-top: 5px;
 }
 
+button.operation {
+    background-color: #ffaa00;
+}
+
+button.operation:hover {
+    background-color: #ffcc66;
+}
+
 button#equal {
     background-color: #ff7700;
 }
