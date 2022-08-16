@@ -45,8 +45,12 @@ for (let button of allButtons) {
 }
 
 // Event listener for AC button on click
+buttonAc.addEventListener("click", () => {
+    upperDisplay.textContent = "";
+    lowerDisplay.textContent = "";
+})
 
 // Event listener for backspace button on click
 buttonBackspace.addEventListener("click", () => {
-    lowerDisplay.textContent = lowerDisplay.textContent.slice(0, lowerDisplay.textContent.length - 1)
+    lowerDisplay.textContent = lowerDisplay.textContent.slice(0, lowerDisplay.textContent.length - 1);
 })
