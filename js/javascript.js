@@ -55,6 +55,9 @@ function resolveEquation(equationArray) {
         }
     }
 
+    // Check for division by zero
+
+
     // OTHERWISE
     // Start with resolving %
     while (equationArray.includes("%")) {
@@ -66,22 +69,40 @@ function resolveEquation(equationArray) {
     // Then resolve for division
     while (equationArray.includes("/")) {
         let index = equationArray.indexOf("/")
-        equationArray[index - 1] /= equationArray[index + 1];
-        equationArray.splice(index, 2);
+        if (equationArray[index + 1] === "-") {
+            equationArray[index - 1] /= - equationArray[index + 2];
+            equationArray.splice(index, 3);
+        } else if (equationArray[index + 1] === 0) {
+            updateUpperDisplay("BAD EXPRESSION - ZERO DIVISION")
+            return
+        } else {
+            equationArray[index - 1] /= equationArray[index + 1];
+            equationArray.splice(index, 2);
+        }
     }
 
     // Then resolve for multiplication
     while (equationArray.includes("*")) {
         let index = equationArray.indexOf("*")
-        equationArray[index - 1] *= equationArray[index + 1];
-        equationArray.splice(index, 2);
+        if (equationArray[index + 1] === "-") {
+            equationArray[index - 1] *= - equationArray[index + 2];
+            equationArray.splice(index, 3);
+        } else {
+            equationArray[index - 1] *= equationArray[index + 1];
+            equationArray.splice(index, 2);
+        }
     }
 
     // Then resolve for substraction
     while (equationArray.includes("-")) {
         let index = equationArray.indexOf("-")
-        equationArray[index - 1] -= equationArray[index + 1];
-        equationArray.splice(index, 2);
+        if (index === 0) {
+            equationArray[index + 1] = - equationArray[index + 1];
+            equationArray.splice(index, 1);
+        } else {
+            equationArray[index - 1] -= equationArray[index + 1];
+            equationArray.splice(index, 2);
+        }
     }
 
     // Then resolve for addition
