@@ -99,11 +99,15 @@ for (let button of allButtons) {
             // + x / symbols rules
             // Cannot add  after same symbol
             // When after . or - replaces it
+            // + x / symbols replace + x / symbols if different
             } else if (/^[^0-9]+/.test(button.value)) {
                 if (button.value === lastCharacter) {
                     buttonEffectError(button)
                     // pass
                 } else if (/[-]|[.]/.test(lastCharacter)) {
+                    backSpace();
+                    typeCharacter();
+                } else if (/[+]|[*]|[/]/.test(lastCharacter) && lastCharacter !== button.value) {
                     backSpace();
                     typeCharacter();
                 } else {
