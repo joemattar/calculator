@@ -87,13 +87,14 @@ button.numbers:hover {
 .display-upper {
     padding: 5px;
     height: 120px;
+    width: 380px;
     background-color: #dd4444;
     border-style: solid;
     border-radius: 25px;
     border-width: 5px;
     border-color: black;
     font-family: Antonio;
-    font-size: 36px;
+    font-size: 30px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -102,6 +103,7 @@ button.numbers:hover {
 .display-lower {
     padding: 5px;
     height: 120px;
+    width: 380px;
     background-color: #33cc99;
     border-style: solid;
     border-radius: 25px;

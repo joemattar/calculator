@@ -227,7 +227,7 @@ buttonEqual.addEventListener("click", () => {
     resolveEquation(equationArray);
 
     upperDisplay.style.fontSize = "50px";
-    lowerDisplay.style.fontSize = "36px";
+    lowerDisplay.style.fontSize = "30px";
     lowerDisplay.textContent = upperDisplay.textContent;
 })
 
