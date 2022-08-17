@@ -31,6 +31,11 @@ button.pressed {
     transform: scale(0.8);
 }
 
+button.error {
+    transform: scale(0.8);
+    border-color: red;
+}
+
 button img {
     width: 48px;
     height: auto;
