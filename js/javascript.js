@@ -208,3 +208,6 @@ buttonEqual.addEventListener("click", () => {
     lowerDisplay.style.fontSize = "36px";
     lowerDisplay.textContent = upperDisplay.textContent;
 })
+
+// TODO: RESOLVE DISPLAYS WITH LARGE NUMBERS
+// TODO: RESOLVE FOR SCIENTIFIC DISPLAY OF NUMBERS
