@@ -43,6 +43,15 @@ function stringParser(string) {
     console.log(equationArray);
 }
 
+function resolveEquation(equationArray) {
+    
+
+}
+
+function updateUpperDisplay() {
+
+}
+
 // Event listerner for all buttons on click
 for (let button of allButtons) {    
     button.addEventListener("click", function typeCharacter() {
