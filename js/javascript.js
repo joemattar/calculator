@@ -28,7 +28,7 @@ function backSpace() {
 }
 
 // Function to parse equation strings
-function stringParser(string) {
+function equationStringParser(string) {
     let equationArray = [];
     string = string.trim();    
     while (string.length !== 0) {
@@ -36,25 +36,73 @@ function stringParser(string) {
         string = string.replace(token[0], "");
         equationArray.push(token[0]);
     }
-    // TO REPLACE WITH WHAT TO RETURN
-    // NEW FUNCTION ?
-    // IF ARRAY ENDS WITH . or + or - or * or / POP()
-    // ERROR IF TWO . IN A DIGIT SEQUENCE
-    console.log(equationArray);
+    return equationArray;
 }
 
 function resolveEquation(equationArray) {
-    
+    // Converts number strings to numbers
+    for (let i = 0; i < equationArray.length; i++) {
+        if (!isNaN(equationArray[i])) {
+            equationArray[i] = + equationArray[i];
+        }
+    }
 
+    // Check for numbers with two decimals symbols = bad expression
+    for (let i = 0; i < equationArray.length - 1; i++) {
+        if (typeof equationArray[i] === "number" && typeof equationArray[i+1] === "number") {
+            updateUpperDisplay("BAD EXPRESSION - CHECK DECIMALS")
+            return
+        }
+    }
+
+    // OTHERWISE
+    // Start with resolving %
+    while (equationArray.includes("%")) {
+        let index = equationArray.indexOf("%")
+        equationArray[index - 1] /= 100;
+        equationArray.splice(index, 1);
+    }
+
+    // Then resolve for division
+    while (equationArray.includes("/")) {
+        let index = equationArray.indexOf("/")
+        equationArray[index - 1] /= equationArray[index + 1];
+        equationArray.splice(index, 2);
+    }
+
+    // Then resolve for multiplication
+    while (equationArray.includes("*")) {
+        let index = equationArray.indexOf("*")
+        equationArray[index - 1] *= equationArray[index + 1];
+        equationArray.splice(index, 2);
+    }
+
+    // Then resolve for substraction
+    while (equationArray.includes("-")) {
+        let index = equationArray.indexOf("-")
+        equationArray[index - 1] -= equationArray[index + 1];
+        equationArray.splice(index, 2);
+    }
+
+    // Then resolve for addition
+    while (equationArray.includes("+")) {
+        let index = equationArray.indexOf("+")
+        equationArray[index - 1] += equationArray[index + 1];
+        equationArray.splice(index, 2);
+    }
+    updateUpperDisplay(equationArray)
 }
 
-function updateUpperDisplay() {
-
+// Function to update the upper display
+function updateUpperDisplay(string) {
+    upperDisplay.textContent = string;
 }
 
 // Event listerner for all buttons on click
 for (let button of allButtons) {    
     button.addEventListener("click", function typeCharacter() {
+        upperDisplay.style.fontSize = "";
+        lowerDisplay.style.fontSize = "";
         let lastCharacter = lowerDisplay.textContent.charAt(lowerDisplay.textContent.length - 1);
         
         if (button.value) {
@@ -68,6 +116,8 @@ for (let button of allButtons) {
                 } else {
                     buttonEffect(button);
                     lowerDisplay.textContent = lowerDisplay.textContent.concat(button.value);
+                    let equationArray = equationStringParser(lowerDisplay.textContent);
+                    resolveEquation(equationArray);
                 }
             // Percentage % symbol rules
             // Can add only after digit or another %
@@ -76,6 +126,8 @@ for (let button of allButtons) {
                 if (/[0-9]|[%]/.test(lastCharacter)) {
                     buttonEffect(button);
                     lowerDisplay.textContent = lowerDisplay.textContent.concat(button.value);
+                    let equationArray = equationStringParser(lowerDisplay.textContent);
+                    resolveEquation(equationArray);
                 } else if (/[.]/.test(lastCharacter)) {
                     backSpace();
                     typeCharacter();
@@ -136,9 +188,23 @@ buttonAc.addEventListener("click", () => {
 // Event listener for backspace button on click
 buttonBackspace.addEventListener("click", () => {
     backSpace();
+    // Parse equation string into an equation array
+    let equationArray = equationStringParser(lowerDisplay.textContent);
+    resolveEquation(equationArray);
 })
 
 // Event listener for equal button on click
 buttonEqual.addEventListener("click", () => {
-    stringParser(lowerDisplay.textContent);
+    // IF STRING ENDS WITH . or + or - or * or / then delete last character
+    let lastCharacter = lowerDisplay.textContent.charAt(lowerDisplay.textContent.length - 1);
+    if (/[.]|[+]|[-]|[*]|[/]/.test(lastCharacter)) {
+        backSpace();
+    }
+    // Parse equation string into an equation array
+    let equationArray = equationStringParser(lowerDisplay.textContent);
+    resolveEquation(equationArray);
+
+    upperDisplay.style.fontSize = "38px";
+    lowerDisplay.style.fontSize = "19px";
+    lowerDisplay.textContent = upperDisplay.textContent;
 })
