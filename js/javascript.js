@@ -101,8 +101,8 @@ function updateUpperDisplay(string) {
 // Event listerner for all buttons on click
 for (let button of allButtons) {    
     button.addEventListener("click", function typeCharacter() {
-        upperDisplay.style.fontSize = "";
-        lowerDisplay.style.fontSize = "";
+        upperDisplay.style.removeProperty("font-size");
+        lowerDisplay.style.removeProperty("font-size");
         let lastCharacter = lowerDisplay.textContent.charAt(lowerDisplay.textContent.length - 1);
         
         if (button.value) {
@@ -204,7 +204,7 @@ buttonEqual.addEventListener("click", () => {
     let equationArray = equationStringParser(lowerDisplay.textContent);
     resolveEquation(equationArray);
 
-    upperDisplay.style.fontSize = "38px";
-    lowerDisplay.style.fontSize = "19px";
+    upperDisplay.style.fontSize = "50px";
+    lowerDisplay.style.fontSize = "36px";
     lowerDisplay.textContent = upperDisplay.textContent;
 })

@@ -93,7 +93,7 @@ button.numbers:hover {
     border-width: 5px;
     border-color: black;
     font-family: Antonio;
-    font-size: 19px;
+    font-size: 36px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -108,7 +108,7 @@ button.numbers:hover {
     border-width: 5px;
     border-color: black;
     font-family: Antonio;
-    font-size: 38px;
+    font-size: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
