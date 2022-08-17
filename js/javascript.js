@@ -125,6 +125,7 @@ for (let button of allButtons) {
         upperDisplay.style.removeProperty("font-size");
         lowerDisplay.style.removeProperty("font-size");
         let lastCharacter = lowerDisplay.textContent.charAt(lowerDisplay.textContent.length - 1);
+        buttonEffect(button);
         
         if (button.value) {
             // ADD OPERATORS RULES
@@ -183,7 +184,7 @@ for (let button of allButtons) {
             // When after . or - replaces it
             // + x / symbols replace + x / symbols if different
             } else if (/^[^0-9]+/.test(button.value)) {
-                if (button.value === lastCharacter) {
+                if (button.value === lastCharacter || lowerDisplay.textContent.trim() === "") {
                     buttonEffectError(button)
                     // pass
                 } else if (/[-]|[.]/.test(lastCharacter)) {
