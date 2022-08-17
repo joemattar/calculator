@@ -2,11 +2,8 @@ const upperDisplay = document.querySelector(".display-upper");
 const lowerDisplay = document.querySelector(".display-lower");
 const buttonAc = document.querySelector("#ac");
 const buttonBackspace = document.querySelector("#backspace");
-
 const buttonEqual = document.querySelector("#equal");
-
 const allButtons = document.querySelectorAll("button");
-
 
 // Function to create transition effect when buttons are clicked
 function buttonEffect(button) {
@@ -22,18 +19,19 @@ function stringParser(string) {
     string = string.trim();
     
     while (string.length !== 0) {
-        let token = string.match(/[0-9]+|[+]|[-]|[*]|[/]|[%]/);
+        let token = string.match(/^\d*[.]?\d+|[+]|[-]|[*]|[/]|[%]+/);
         string = string.replace(token[0], "");
-        array.push(token[0]);
+        equationArray.push(token[0]);
     }
     console.log(equationArray);
 }
 
 // Event listerner for all buttons on click
-for (let button of allButtons) {
+for (let button of allButtons) {    
     button.addEventListener("click", () => {
         buttonEffect(button)
         if (button.value) {
+            // ADD OPERATORS RULES
             lowerDisplay.textContent = lowerDisplay.textContent.concat(button.value);
         }
     })    
